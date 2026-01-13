@@ -1,7 +1,3 @@
-cmake_minimum_required(VERSION 3.20)
-project(LayoutBrewer_Test)
-set(CMAKE_CXX_STANDARD 20)
-
 include("${TEAPACKET_ROOT}/Subtools/AssetMixer/Functions.CMake")
 
 add_executable(LayoutBrewer_Test main.cpp)
