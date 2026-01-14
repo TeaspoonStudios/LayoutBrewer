@@ -2,14 +2,13 @@
 
 #include "LayoutBrewer/Panel.hpp"
 
-namespace LayoutBrewer
-{
-    struct ContainerPanelParams;
-}
+
 
 namespace LayoutBrewer
 {
     class ImagePanel;
+    struct ImagePanelParams;
+    struct ContainerPanelParams;
     
     class ContainerPanel
     {
@@ -31,10 +30,13 @@ namespace LayoutBrewer
             return contentsSize;
         }
 
-        [[nodiscard]] ContainerPanel& GetChildContainer(const size_t i);
-        [[nodiscard]] ImagePanel& GetChildImage(const size_t i);
+        [[nodiscard]] ContainerPanel& GetChildContainer(size_t i);
+        [[nodiscard]] ImagePanel& GetChildImage(size_t i);
         [[nodiscard]] size_t GetChildContainerCount() const;
         [[nodiscard]] size_t GetChildImageCount() const;
+
+        ContainerPanel& AddChildContainer(const ContainerPanelParams& params);
+        ImagePanel& AddChildImage(const ImagePanelParams& params);
 
 
         ContainerPanel() = delete;

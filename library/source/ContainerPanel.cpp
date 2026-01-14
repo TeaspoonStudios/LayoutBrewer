@@ -27,6 +27,18 @@ ContainerPanel::ContainerPanel(const ContainerPanelParams& params, ContainerPane
     }
 }
 
+ContainerPanel& ContainerPanel::AddChildContainer(const ContainerPanelParams& params)
+{
+    return subcontainers.emplace_back(ContainerPanel(params, this));
+}
+
+ImagePanel& ContainerPanel::AddChildImage(const ImagePanelParams& params)
+{
+    ImagePanelParams imageParams = params;
+    imageParams.parent = this;
+    return images.emplace_back(imageParams);
+}
+
 ContainerPanel& ContainerPanel::GetChildContainer(const size_t i)
 { return subcontainers[i]; }
 
