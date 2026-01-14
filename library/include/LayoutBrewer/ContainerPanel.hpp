@@ -4,6 +4,11 @@
 
 namespace LayoutBrewer
 {
+    struct ContainerPanelParams;
+}
+
+namespace LayoutBrewer
+{
     class ImagePanel;
     
     class ContainerPanel
@@ -12,6 +17,8 @@ namespace LayoutBrewer
         std::vector<ContainerPanel> subcontainers;
         std::vector<ImagePanel> images;
         Vector2f contentsSize;
+
+        explicit ContainerPanel(const ContainerPanelParams& params, ContainerPanel* parent);
 
     public:
         PanelNode panel = PanelNode(PanelType::Container);
@@ -24,9 +31,14 @@ namespace LayoutBrewer
             return contentsSize;
         }
 
-        
+        [[nodiscard]] ContainerPanel& GetChildContainer(const size_t i);
+        [[nodiscard]] ImagePanel& GetChildImage(const size_t i);
+        [[nodiscard]] size_t GetChildContainerCount() const;
+        [[nodiscard]] size_t GetChildImageCount() const;
+
+
         ContainerPanel() = delete;
         ~ContainerPanel();
-        explicit ContainerPanel(const Rect& rect, ContainerPanel* parent = nullptr, Vector2f contentsSize = Vector2f{0,0});
+        explicit ContainerPanel(const ContainerPanelParams& params);
     };
 }

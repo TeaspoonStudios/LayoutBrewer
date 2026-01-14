@@ -1,11 +1,14 @@
 #include "LayoutBrewer/ContainerPanel.hpp"
 #include "LayoutBrewer/ImagePanel.hpp"
 
+#include "LayoutBrewer/ImagePanelParams.hpp"
+
 using namespace LayoutBrewer;
 
-ImagePanel::ImagePanel(const Rect& rect, ContainerPanel* parent,  TeaPacket::Graphics::Texture* texture):
-panel(PanelType::Image, rect, parent),
-texture(texture)
+ImagePanel::ImagePanel(const ImagePanelParams& params):
+panel(PanelType::Image, params.rect, params.parent),
+texture(params.texture)
 {
-    
 }
+
+ImagePanel::ImagePanel(ImagePanel&& other) noexcept = default;

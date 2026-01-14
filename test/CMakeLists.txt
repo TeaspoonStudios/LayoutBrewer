@@ -4,6 +4,10 @@ add_executable(LayoutBrewer_Test main.cpp)
 TP_use_profile(Windows)
 target_link_libraries(LayoutBrewer_Test LayoutBrewer)
 
+TP_add_extension_subdirectory(STBImageLoader)
+target_link_libraries(LayoutBrewer_Test
+        TeaPacket_Extension_STBImageLoader)
+
 # asset mixer temp
 set(PARSER_DIRS "${TEAPACKET_ROOT}/Modules/Graphics/Direct3D11/AssetMixer/Parsers/")
 

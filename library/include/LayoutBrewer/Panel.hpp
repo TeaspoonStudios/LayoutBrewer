@@ -45,7 +45,6 @@ namespace LayoutBrewer
         [[nodiscard]] PositionedRect EvaluateInsideParent() const;
         [[nodiscard]] PositionedRect EvaluateScreenPosition();
         [[nodiscard]] PositionedRect EvaluateScreenCoordinates();
-
         
     };
 }

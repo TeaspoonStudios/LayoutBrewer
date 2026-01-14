@@ -1,6 +1,9 @@
 #version 450
 
 layout(location = 0) in vec2 i_position;
+layout(location = 1) in vec2 i_uv;
+
+layout(location = 0) out vec2 o_uv;
 
 layout(binding = 0, std140) uniform u_block1
 {
@@ -11,7 +14,8 @@ layout(binding = 0, std140) uniform u_block1
 void main()
 {
     gl_Position = vec4(i_position, 0.5f, 1.0f);
-    gl_Position += vec4(topLeft, 0.0, 0.0);
     gl_Position *= vec4(size, 1.0, 1.0);
+    gl_Position += vec4(topLeft, 0.0, 0.0);
     gl_Position = (gl_Position * vec4(2.0,-2.0,1.0,1.0)) + vec4(-1.0, 1.0, 0.0, 0.0);
+    o_uv = i_uv;
 }
